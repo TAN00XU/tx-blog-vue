@@ -7,32 +7,32 @@
       <div class="login-wrapper">
         <!-- 用户名 -->
         <v-text-field
-          v-model="username"
-          label="邮箱号"
-          placeholder="请输入您的邮箱号"
-          :rules="[rules.required, rules.email]"
-          clearable
-          @keyup.enter="login"
+            v-model="username"
+            label="邮箱号"
+            placeholder="请输入您的邮箱号"
+            :rules="[rules.required, rules.email]"
+            clearable
+            @keyup.enter="login"
         />
         <!-- 密码 -->
         <v-text-field
-          v-model="password"
-          class="mt-7"
-          label="密码"
-          placeholder="请输入您的密码"
-          :rules="[rules.required, rules.counter]"
-          @keyup.enter="login"
-          :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="show ? 'text' : 'password'"
-          @click:append="show = !show"
+            v-model="password"
+            class="mt-7"
+            label="密码"
+            placeholder="请输入您的密码"
+            :rules="[rules.required, rules.counter]"
+            @keyup.enter="login"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show ? 'text' : 'password'"
+            @click:append="show = !show"
         />
         <!-- 按钮 -->
         <v-btn
-          class="mt-7"
-          block
-          color="blue"
-          style="color:#fff"
-          @click="login"
+            class="mt-7"
+            block
+            color="blue"
+            style="color:#fff"
+            @click="login"
         >
           登录
         </v-btn>
@@ -47,17 +47,17 @@
           <div class="social-login-wrapper">
             <!-- 微博登录 -->
             <a
-              v-if="showLogin('weibo')"
-              class="mr-3 iconfont iconweibo"
-              style="color:#e05244"
-              @click="weiboLogin"
+                v-if="showLogin('weibo')"
+                class="mr-3 iconfont iconweibo"
+                style="color:#e05244"
+                @click="weiboLogin"
             />
             <!-- qq登录 -->
             <a
-              v-if="showLogin('qq')"
-              class="iconfont iconqq"
-              style="color:#00AAEE"
-              @click="qqLogin"
+                v-if="showLogin('qq')"
+                class="iconfont iconqq"
+                style="color:#00AAEE"
+                @click="qqLogin"
             />
           </div>
         </div>
@@ -68,8 +68,9 @@
 
 <script>
 import {login} from "@/api/login";
+
 export default {
-  data: function() {
+  data: function () {
     return {
       username: "",
       password: "",
@@ -100,14 +101,13 @@ export default {
     isMobile() {
       const clientWidth = document.documentElement.clientWidth;
       return clientWidth <= 960;
-
     },
     socialLoginList() {
       return this.$store.state.blogInfo.websiteConfig.socialLoginList;
     },
     showLogin() {
-      return function(type) {
-        return this.socialLoginList.indexOf(type) != -1;
+      return function (type) {
+        return this.socialLoginList.indexOf(type) !== -1;
       };
     }
   },
@@ -126,55 +126,57 @@ export default {
     login() {
       const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
       if (!reg.test(this.username)) {
-        this.$toast({ type: "error", message: "邮箱格式不正确" });
+        this.$toast({type: "error", message: "邮箱格式不正确"});
         return false;
       }
-      if (this.password.trim().length == 0) {
-        this.$toast({ type: "error", message: "密码不能为空" });
+      if (this.password.trim().length === 0) {
+        this.$toast({type: "error", message: "密码不能为空"});
         return false;
       }
-      const that = this;
+      const _this = this;
 
       //腾讯图形验证码
       // eslint-disable-next-line no-undef
-      var captcha = new TencentCaptcha(this.config.TENCENT_CAPTCHA, function(
-        res
-      ) {
-        // ret  Int  验证结果，0：验证成功。2：用户主动关闭验证码。
-        if (res.ret === 0) {
-          //发送登录请求
-          let param = new URLSearchParams();
-          param.append("username", that.username);
-          param.append("password", that.password);
-          login(param).then(({ data }) => {
-            if (data.flag) {
-              that.username = "";
-              that.password = "";
-              that.$store.commit("login", data.data);
-              that.$store.commit("closeModel");
-              that.$toast({ type: "success", message: "登录成功" });
-            } else {
-              that.$toast({ type: "error", message: data.message });
+      const captcha = new TencentCaptcha(
+          this.config.TENCENT_CAPTCHA,
+          function (res) {
+            // ret  Int  验证结果，0：验证成功。2：用户主动关闭验证码。
+            if (res.ret === 0) {
+              //发送登录请求
+              let param = new URLSearchParams();
+              param.append("username", _this.username);
+              param.append("password", _this.password);
+              login(param).then(
+                  ({data}) => {
+                    if (data.status) {
+                      _this.username = "";
+                      _this.password = "";
+                      _this.$store.commit("LOGIN", data.data);
+                      _this.$store.commit("CLOSE_MODEL");
+                      _this.$toast({type: "success", message: "登录成功"});
+                    } else {
+                      _this.$toast({type: "error", message: data.message});
+                    }
+                  }
+              );
             }
           });
-        }
-      });
       // 显示验证码
       captcha.show();
     },
     //取消登录
-    cancelLogin(){
-      this.username="";
-      this.password="";
+    cancelLogin() {
+      this.username = "";
+      this.password = "";
       this.loginFlag = false;
     },
     qqLogin() {
       //保留当前路径
       this.$store.commit("saveLoginUrl", this.$route.path);
       if (
-        navigator.userAgent.match(
-          /(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i
-        )
+          navigator.userAgent.match(
+              /(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i
+          )
       ) {
         // eslint-disable-next-line no-undef
         QC.Login.showPopup({
@@ -183,11 +185,11 @@ export default {
         });
       } else {
         window.open(
-          "https://graph.qq.com/oauth2.0/show?which=Login&display=pc&client_id=" +
+            "https://graph.qq.com/oauth2.0/show?which=Login&display=pc&client_id=" +
             +this.config.QQ_APP_ID +
             "&response_type=token&scope=all&redirect_uri=" +
             this.config.QQ_REDIRECT_URI,
-          "_self"
+            "_self"
         );
       }
     },
@@ -195,11 +197,11 @@ export default {
       //保留当前路径
       this.$store.commit("saveLoginUrl", this.$route.path);
       window.open(
-        "https://api.weibo.com/oauth2/authorize?client_id=" +
+          "https://api.weibo.com/oauth2/authorize?client_id=" +
           this.config.WEIBO_APP_ID +
           "&response_type=code&redirect_uri=" +
           this.config.WEIBO_REDIRECT_URI,
-        "_self"
+          "_self"
       );
     }
   }
@@ -213,6 +215,7 @@ export default {
   font-size: 0.75rem;
   text-align: center;
 }
+
 .social-login-title::before {
   content: "";
   display: inline-block;
@@ -222,6 +225,7 @@ export default {
   margin: 0 12px;
   vertical-align: middle;
 }
+
 .social-login-title::after {
   content: "";
   display: inline-block;
@@ -231,11 +235,13 @@ export default {
   margin: 0 12px;
   vertical-align: middle;
 }
+
 .social-login-wrapper {
   margin-top: 1rem;
   font-size: 2rem;
   text-align: center;
 }
+
 .social-login-wrapper a {
   text-decoration: none;
 }

@@ -39,17 +39,17 @@
           </a>
           <ul class="menus-submenu">
             <li>
-              <router-link to="/archives">
+              <router-link to="/archiveArticle">
                 <i class="iconfont iconguidang"/> 归档
               </router-link>
             </li>
             <li>
-              <router-link to="/categories">
+              <router-link to="/categoriesArticle">
                 <i class="iconfont iconfenlei"/> 分类
               </router-link>
             </li>
             <li>
-              <router-link to="/tags">
+              <router-link to="/tagsArticle">
                 <i class="iconfont iconbiaoqian"/> 标签
               </router-link>
             </li>

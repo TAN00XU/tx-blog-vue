@@ -1,5 +1,5 @@
 <template>
-  <v-card class="animate__animated animate__zoomIn" v-if="talkList.length > 0">
+  <v-card  class="animate__animated animate__zoomIn" v-if="talkList.length > 0">
 
     <router-link to="/talks" class="swiper-container">
       <v-icon size="20" color="#4c4948">mdi-chat-outline</v-icon>

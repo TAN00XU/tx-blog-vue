@@ -18,22 +18,36 @@ const mutations = {
         state.blogInfo.websiteConfig = {...state.blogInfo.websiteConfig, ...blogInfo}
     },
 
+    /**
+     * 登录 用户信息
+     * @param state
+     * @param user
+     */
     LOGIN(state,user){
-        
-    }
+        state.userInfo.userId = user.userInfoId;
+        state.userInfo.avatar = user.avatar;
+        state.userInfo.nickname = user.nickname;
+        state.userInfo.intro = user.intro;
+        state.webSite = user.webSite;
+        state.articleLikeSet = user.articleLikeSet ? user.articleLikeSet : [];
+        state.commentLikeSet = user.commentLikeSet ? user.commentLikeSet : [];
+        state.talkLikeSet = user.talkLikeSet ? user.talkLikeSet : [];
+        state.email = user.email;
+        state.loginType = user.loginType;
+    },
+    /**
+     * 关闭模块
+     * @param state
+     */
+    CLOSE_MODEL(state) {
+        state.registerFlag = false;
+        state.loginFlag = false;
+        state.searchFlag = false;
+        state.emailFlag = false;
+    },
 }
 //准备state对象——保存具体的数据
 const state = {
-    //用户信息
-    userInfo:{
-        userId:String,
-        //昵称
-        nickname:"昵称",
-        //头像
-        // avatar:"https://static.talkxj.com/avatar/user.png",
-        avatar: "",
-        token: "<empty>",
-    },
     //搜索框标记
     searchFlag: false,
     //登录框标记
@@ -44,6 +58,31 @@ const state = {
     forgetFlag: false,
     //侧边栏是否打开
     drawer: false,
+
+    //用户信息
+    userInfo:{
+        userId:String,
+        //昵称
+        nickname:"昵称",
+        //头像
+        // avatar:"https://static.talkxj.com/avatar/user.png",
+        avatar: "",
+        //用户简介
+        intro:"",
+        //用户网站
+        webSite:"",
+        //文章点赞
+        articleLikeSet:[],
+        //评论点赞
+        commentLikeSet:[],
+        //说说点赞
+        talkLikeSet:[],
+        //邮箱
+        email:"",
+        //登录类型
+        loginType:"",
+        token: "<empty>",
+    },
 
     //博客信息
     blogInfo: {
@@ -95,8 +134,8 @@ const state = {
             },
             {
                 id: 2,
-                pageName: "归档",
-                pageLabel: "archive",
+                pageName: "文章归档",
+                pageLabel: "archiveArticle",
                 pageCover: "https://static.talkxj.com/config/643f28683e1c59a80ccfc9cb19735a9c.jpg",
                 createTime: "2021-08-07 10:32:36",
                 updateTime: "2021-10-04 15:43:14"
@@ -104,14 +143,14 @@ const state = {
             {
                 "pageCover": "https://static.talkxj.com/config/83be0017d7f1a29441e33083e7706936.jpg",
                 "id": 3,
-                "pageName": "分类",
+                "pageName": "文章分类",
                 "pageLabel": "category"
             },
             {
                 "pageCover": "https://static.talkxj.com/config/a6f141372509365891081d755da963a1.png",
                 "id": 4,
-                "pageName": "标签",
-                "pageLabel": "tag"
+                "pageName": "文章标签",
+                "pageLabel": "tagArticle"
             },
             {
                 "pageCover": "https://static.talkxj.com/config/e587c4651154e4da49b5a54f865baaed.jpg",

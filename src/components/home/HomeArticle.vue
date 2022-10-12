@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import {homeArticle} from "@/api/article";
+import {homeArticle} from "@/api/articles";
 
 export default {
   name: "HomeArticle",

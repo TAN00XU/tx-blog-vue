@@ -1,5 +1,7 @@
 <template>
-  <v-card class="blog-card animate__animated animate__zoomIn mt-5 big">
+  <v-card class="blog-card animate__animated animate__zoomIn mt-5 big"
+          elevation="0"
+          outlined>
     <div class="web-info-title">
       <v-icon size="18">mdi-bell</v-icon>
       公告
@@ -7,12 +9,16 @@
     <div style="font-size:0.9rem">
       {{ blogInfo.websiteConfig.websiteNotice }}
     </div>
+
   </v-card>
 </template>
 
+
 <script>
+/**
+ * 网站公告
+ */
 export default {
-  //网站公告
   name: "WebsiteNotice",
   computed: {
     blogInfo() {
@@ -44,4 +50,5 @@ export default {
     transform: scale(1.5);
   }
 }
+
 </style>

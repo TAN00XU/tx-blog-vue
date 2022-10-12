@@ -9,7 +9,7 @@ import request from "@/api/baseRequest";
 export function login(param) {
     return request({
         method: "POST",
-        url: "/web/login",
+        url: "/web/user/login",
         data:param
     })
 }
@@ -22,7 +22,7 @@ export function login(param) {
 export function register(param){
     return request({
         method: "POST",
-        url: "/web/register",
+        url: "/web/user/register",
         data:param
     })
 }

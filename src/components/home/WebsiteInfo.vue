@@ -1,21 +1,23 @@
 <template>
-  <v-card class="blog-card animate__animated animate__zoomIn mt-5">
-    <div class="web-info-title">
-      <v-icon size="18">mdi-chart-line</v-icon>
-      网站资讯
-    </div>
-    <div class="web-info">
-      <div style="padding:4px 0 0">
-        运行时间:<span class="float-right">{{ time }}</span>
-      </div>
-      <div style="padding:4px 0 0">
-        总访问量:
-        <span class="float-right">
+      <v-card class="blog-card animate__animated animate__zoomIn mt-5 pt-2"
+              loading
+      >
+        <div class="web-info-title pt-3">
+          <v-icon size="18">mdi-chart-line</v-icon>
+          网站资讯
+        </div>
+        <div class="web-info">
+          <div style="padding:4px 0 0">
+            运行时间:<span class="float-right">{{ time }}</span>
+          </div>
+          <div style="padding:4px 0 0">
+            总访问量:
+            <span class="float-right">
           {{ blogInfo.viewsCount }}
         </span>
-      </div>
-    </div>
-  </v-card>
+          </div>
+        </div>
+      </v-card>
 </template>
 
 <script>

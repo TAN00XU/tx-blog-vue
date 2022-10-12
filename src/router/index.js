@@ -16,6 +16,27 @@ const routes = [
         }
     },
     {
+        path: "/archiveArticle",
+        component: resolve => require(["../views/archiveArticle/ArchiveArticle.vue"], resolve),
+        meta: {
+            title: "文章归档"
+        }
+    },
+    {
+        path: "/categoriesArticle",
+        component: resolve => require(["../views/categoryArticle/CategoryArticle.vue"], resolve),
+        meta: {
+            title: "文章分类"
+        }
+    },
+    {
+        path: "/tagsArticle",
+        component: resolve => require(["../views/tagArticle/TagArticle.vue"], resolve),
+        meta: {
+            title: "文章标签"
+        }
+    },
+    {
         path: "/friendlyLink",
         component: resolve => require(["../views/friendlyLink/FriendlyLink.vue"], resolve),
         meta: {
@@ -36,7 +57,7 @@ const routes = [
             title: "留言板"
         }
     },
-    //匹配所有
+    //匹配其他所有
     {
         path: '*',
         component: resolve => require(["../views/home/HomePage.vue"], resolve)
@@ -64,7 +85,8 @@ router.afterEach((to,from) => {
     }
     window.scrollTo({
         top: 0,
-        behavior: "instant"
+        //smooth(平滑滚动),instant(瞬间滚动),默认值auto,实测效果等同于instant
+        behavior: "smooth"
     });
     //关闭进度条
     NProgress.done();

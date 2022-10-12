@@ -11,3 +11,14 @@ export function blogInfo() {
         url: "/web/website/config"
     })
 }
+
+/**
+ * 上传访客信息
+ * @returns {*}
+ */
+export function report(){
+    return request({
+        method : "POST",
+        url:"/web/report"
+    })
+}

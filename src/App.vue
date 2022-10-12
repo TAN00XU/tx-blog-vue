@@ -33,7 +33,7 @@ import ForgetModel from "./components/model/ForgetModel";
 
 //API
 //获取博客信息
-import {blogInfo} from "@/api/blogInfo";
+import {blogInfo,report} from "@/api/blogInfo";
 
 
 export default {
@@ -50,7 +50,7 @@ export default {
     // 获取博客信息
     this.getBlogInfo();
     // 上传访客信息
-    // this.axios.post("/api/report");
+    report();
   },
   methods:{
     getBlogInfo() {

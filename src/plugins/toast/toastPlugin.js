@@ -1,4 +1,4 @@
-import ToastComponent from "./Toast.vue"; // 引入先前写好的vue
+import ToastComponent from "./ToastComponent.vue"; // 引入先前写好的vue
 
 const toastPlugin = {};
 

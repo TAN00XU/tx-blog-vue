@@ -153,8 +153,8 @@ export default {
           login(param).then(({data}) => {
             this.username = "";
             this.password = "";
-            this.$store.commit("login", data.data);
-            this.$store.commit("closeModel");
+            this.$store.commit("LOGIN", data.data);
+            this.$store.commit("CLOSE_MODEL");
           });
           this.$toast({type: "success", message: "登录成功"});
         } else {

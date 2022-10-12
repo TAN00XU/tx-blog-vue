@@ -13,6 +13,7 @@
           <WebsiteNotice/>
           <!--网站信息-->
           <WebsiteInfo/>
+          <WeatherHeFeng/>
         </div>
       </v-col>
       <v-col md="9" cols="12">
@@ -34,7 +35,7 @@ import TalkCarousel from "@/components/home/TalkCarousel";
 import MyCard from "@/components/home/MyCard";
 import WebsiteNotice from "@/components/home/WebsiteNotice";
 import WebsiteInfo from "@/components/home/WebsiteInfo";
-
+import WeatherHeFeng from "@/components/home/WeatherHeFeng";
 /**
  * 主页
  */
@@ -46,7 +47,8 @@ export default {
     HomeArticle,
     MyCard,
     WebsiteNotice,
-    WebsiteInfo
+    WebsiteInfo,
+    WeatherHeFeng
   }
 }
 </script>
@@ -58,6 +60,8 @@ export default {
     margin: calc(100vh - 48px) auto 28px auto;
     padding: 0 5px;
   }
+
+
 }
 @media (max-width: 759px) {
   /*首页容器*/
