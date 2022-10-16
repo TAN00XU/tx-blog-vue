@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--横幅-->
-    <PageBanner path-name="aboutMe"/>
+    <PageBanner path-name="aboutMe" title="pageName"/>
     <!-- 关于我内容 -->
     <v-card class="blog-container">
       <!-- 博主头像 -->

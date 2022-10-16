@@ -20,6 +20,8 @@
     <RegisterModel></RegisterModel>
     <!-- 忘记密码框 -->
     <ForgetModel></ForgetModel>
+    <!--修改邮箱框-->
+    <EmailModel></EmailModel>
   </v-app>
 </template>
 
@@ -30,6 +32,7 @@ import SearchModel from './components/model/SearchModel.vue';
 import LoginModel from "./components/model/LoginModel";
 import RegisterModel from "./components/model/RegisterModel";
 import ForgetModel from "./components/model/ForgetModel";
+import EmailModel from "@/components/model/EmailModel";
 
 //API
 //获取博客信息
@@ -44,7 +47,8 @@ export default {
     SearchModel,
     LoginModel,
     RegisterModel,
-    ForgetModel
+    ForgetModel,
+    EmailModel
   },
   created() {
     // 获取博客信息

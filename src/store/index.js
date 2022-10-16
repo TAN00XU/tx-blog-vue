@@ -11,7 +11,7 @@ const mutations = {
     /**
      * 博客信息赋值
      * @param state
-     * @param blogInfo
+     * @param blogInfo 博客信息
      * @constructor
      */
     BLOG_INFO(state, blogInfo) {
@@ -19,22 +19,80 @@ const mutations = {
     },
 
     /**
-     * 登录 用户信息
+     * 登录 写入用户信息
      * @param state
-     * @param user
+     * @param user 用户信息
      */
-    LOGIN(state,user){
-        state.userInfo.userId = user.userInfoId;
+    LOGIN(state, user) {
+        state.userInfo.userId = user.userInfo.userId;
         state.userInfo.avatar = user.avatar;
         state.userInfo.nickname = user.nickname;
         state.userInfo.intro = user.intro;
-        state.webSite = user.webSite;
-        state.articleLikeSet = user.articleLikeSet ? user.articleLikeSet : [];
-        state.commentLikeSet = user.commentLikeSet ? user.commentLikeSet : [];
-        state.talkLikeSet = user.talkLikeSet ? user.talkLikeSet : [];
-        state.email = user.email;
-        state.loginType = user.loginType;
+        state.userInfo.webSite = user.webSite;
+        state.userInfo.articleLikeSet = user.articleLikeSet ? user.articleLikeSet : [];
+        state.userInfo.commentLikeSet = user.commentLikeSet ? user.commentLikeSet : [];
+        state.userInfo.talkLikeSet = user.talkLikeSet ? user.talkLikeSet : [];
+        state.userInfo.email = user.email;
+        state.userInfo.loginType = user.loginType;
     },
+
+    /**
+     * 退出登录
+     * @param state
+     * @constructor
+     */
+    LOGOUT(state) {
+        state.userInfo = {}
+    },
+
+    /**
+     * 改变用户邮箱号
+     * @param state
+     * @param email 邮箱号
+     * @constructor
+     */
+    CHANGE_EMAIL(state, email) {
+        state.userInfo.email = email
+    },
+
+    /**
+     * 更新用户信息
+     * @param state
+     * @param user
+     * @constructor
+     */
+    UPDATE_USER_INFO(state, user) {
+        state.userInfo.nickname = user.nickname;
+        state.userInfo.intro = user.intro;
+        state.userInfo.webSite = user.webSite
+    },
+
+    /**
+     * 更新用户头像
+     * @param state
+     * @param avatar
+     * @constructor
+     */
+    UPDATE_AVATAR(state, avatar) {
+        state.userInfo.avatar = avatar;
+    },
+
+    /**
+     * 文章点赞
+     * @param state
+     * @param articleId 文章id
+     * @constructor
+     */
+    ARTICLE_LIKE(state, articleId) {
+        let articleLikeSet = state.userInfo.articleLikeSet;
+        //是否点过赞，点过就取消点赞
+        if (articleLikeSet.indexOf(articleId) !== -1) {
+            articleLikeSet.splice(articleLikeSet.indexOf(articleId), 1)
+        } else {
+            articleLikeSet.push(articleId);
+        }
+    },
+
     /**
      * 关闭模块
      * @param state
@@ -56,31 +114,32 @@ const state = {
     registerFlag: false,
     //忘记密码框标记
     forgetFlag: false,
+    //修改邮箱框标记
+    emailFlag: false,
     //侧边栏是否打开
     drawer: false,
-
     //用户信息
-    userInfo:{
-        userId:String,
+    userInfo: {
+        userId: String,
         //昵称
-        nickname:"昵称",
+        nickname: "昵称",
         //头像
-        // avatar:"https://static.talkxj.com/avatar/user.png",
-        avatar: "",
+        avatar: "https://static.talkxj.com/avatar/user.png",
+        // avatar: "",
         //用户简介
-        intro:"",
+        intro: "",
         //用户网站
-        webSite:"",
-        //文章点赞
-        articleLikeSet:[],
-        //评论点赞
-        commentLikeSet:[],
+        webSite: "",
+        //点过赞的文章
+        articleLikeSet: [],
+        //点过赞的评论
+        commentLikeSet: [],
         //说说点赞
-        talkLikeSet:[],
-        //邮箱
-        email:"",
+        talkLikeSet: [],
+        //用户邮箱
+        email: "tan00xu@163.com",
         //登录类型
-        loginType:"",
+        loginType: "null",
         token: "<empty>",
     },
 
@@ -96,7 +155,7 @@ const state = {
             //网站简介
             websiteIntro: "饮梦的个人博客",
             //网站公告
-            websiteNotice:"暂无公告",
+            websiteNotice: "暂无公告",
             //网站创建时间
             websiteCreateTime: "2022-10-1",
             //备案号
@@ -104,12 +163,19 @@ const state = {
             //社交登录列表
             socialLoginList: [],
             //社交链接列表
-            socialUrlList: ["qq","github","gitee"],
-            qq:"tan00xu",
-            github:"https://github.com/TAN00XU",
-            gitee:"https://gitee.com/TAN00XU",
+            socialUrlList: ["qq", "github", "gitee"],
+            qq: "tan00xu",
+            github: "https://github.com/TAN00XU",
+            gitee: "https://gitee.com/TAN00XU",
             //游客头像
-            touristAvatar:"https://static.talkxj.com/photos/b553f564f81a80dc338695acb1b475d2.jpg"
+            touristAvatar: "https://static.talkxj.com/photos/b553f564f81a80dc338695acb1b475d2.jpg",
+            //是否开启打赏
+            isReward: 0,
+            //微信二维码
+            weiXinQRCode: "",
+            //支付宝二维码
+            alipayQRCode: ""
+
         },
         //文章数量
         articleCount: 99,
@@ -118,15 +184,15 @@ const state = {
         //标签数量
         tagCount: 99,
         //访问量
-        viewsCount:99999,
+        viewsCount: 99999,
         //页面列表
         pageList: [
             {
                 id: 1,
                 pageName: "首页",
                 pageLabel: "home",
-                // pageCover: "https://static.talkxj.com/config/0bee7ba5ac70155766648e14ae2a821f.jpg",
-                pageCover: "1.jpg",
+                pageCover: "https://static.talkxj.com/config/0bee7ba5ac70155766648e14ae2a821f.jpg",
+                // pageCover: "1.jpg",
                 // pageCover: "https://cdn.pixabay.com/photo/2022/06/08/05/47/stars-7249785_960_720.jpg",
                 // pageCover: "https://images.wallpaperscraft.com/image/single/cat_cute_ball_127642_3382x2616.jpg",
                 createTime: "2021-08-07 10:32:36",
@@ -180,7 +246,7 @@ const state = {
                 "pageCover": "https://static.talkxj.com/config/ebae4c93de1b286a8d50aa62612caa59.jpeg",
                 "id": 9,
                 "pageName": "个人中心",
-                "pageLabel": "user"
+                "pageLabel": "personalCenter"
             },
             {
                 "pageCover": "https://static.talkxj.com/config/924d65cc8312e6cdad2160eb8fce6831.jpg",

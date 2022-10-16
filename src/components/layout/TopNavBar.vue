@@ -18,7 +18,7 @@
     <div class="d-md-block d-none nav-container">
       <div class="float-left blog-title">
         <router-link to="/">
-          {{ blogInfo.websiteConfig.websiteAuthor }}
+          {{ websiteAuthor }}
         </router-link>
       </div>
       <div class="float-right nav-title">
@@ -105,7 +105,7 @@
             />
             <ul class="menus-submenu">
               <li>
-                <router-link to="/user">
+                <router-link to="/personalCenter">
                   <i class="iconfont icongerenzhongxin"/> 个人中心
                 </router-link>
               </li>
@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {logout} from "@/api/login";
 
 export default {
   name: "TopNavBar",
@@ -162,12 +162,12 @@ export default {
     //退出登录
     logout() {
       //如果在个人中心则跳回上一页
-      if (this.$route.path === "/user") {
+      if (this.$route.path === "/personalCenter") {
         this.$router.go(-1);
       }
-      this.axios.get("/api/logout").then(({data}) => {
-        if (data.flag) {
-          this.$store.commit("logout");
+      logout().then(({data}) => {
+        if (data.status) {
+          this.$store.commit("LOGOUT");
           this.$toast({type: "success", message: "注销成功"});
         } else {
           this.$toast({type: "error", message: data.message});
@@ -176,16 +176,12 @@ export default {
     }
   },
   computed: {
-    //借助mapState生成计算属性
-    //侧边栏，头像，博客信息
-    ...mapState(["avatar", "blogInfo"]),
-    // avatar() {
-    //   return this.$store.state.avatar;
-    // },
-    // blogInfo() {
-    //   return this.$store.state.blogInfo;
-    // }
-
+    avatar(){
+      return this.$store.state.userInfo.avatar;
+    },
+    websiteAuthor(){
+      return this.$store.state.blogInfo.websiteConfig.websiteAuthor;
+    }
   }
 }
 </script>

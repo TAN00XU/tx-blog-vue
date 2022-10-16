@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner path-name="archiveArticle"/>
+    <PageBanner path-name="archiveArticle" title="pageName"/>
     <!-- 归档列表 -->
     <v-card class="blog-container">
       <timeline timeline-theme="#00BBFF">
@@ -55,7 +55,7 @@ export default {
     TimelineItem,
     TimelineTitle
   },
-  data: function() {
+  data() {
     return {
       current: 1,
       //共几页
@@ -144,5 +144,7 @@ export default {
 .articleItem:hover {
   font-size: 1.2rem;
   color: #00AAEE;
+  transition: all 0.3s linear;
+
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner path-name="friendlyLink"/>
+    <PageBanner path-name="friendlyLink" title="pageName"/>
     <!-- 链接列表 -->
     <v-card class="blog-container">
       <div class="link-title mb-1">

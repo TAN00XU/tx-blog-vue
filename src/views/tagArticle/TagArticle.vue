@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner path-name="tagArticle"/>
+    <PageBanner path-name="tagArticle" title="pageName"/>
     <!-- 标签列表 -->
     <v-card class="blog-container">
       <div class="tag-cloud-title">标签 - {{ count }}</div>

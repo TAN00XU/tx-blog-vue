@@ -59,6 +59,10 @@
 </template>
 
 <script>
+import {emailCode} from "@/api/email";
+/**
+ * 忘记密码模块
+ */
 export default {
   data: function() {
     return {
@@ -86,23 +90,20 @@ export default {
       this.$store.state.loginFlag = true;
     },
     sendCode() {
-      const that = this;
+      const _this = this;
       // eslint-disable-next-line no-undef
       const captcha = new TencentCaptcha(
           this.config.TENCENT_CAPTCHA,
           function (res) {
         if (res.ret === 0) {
           //发送邮件
-          that.countDown();
-          that.axios
-              .get("/api/users/code", {
-                params: {username: that.username}
-              })
+          _this.countDown();
+          emailCode(_this.username)
               .then(({data}) => {
-                if (data.flag) {
-                  that.$toast({type: "success", message: "发送成功"});
+                if (data.status) {
+                  _this.$toast({type: "success", message: "发送成功"});
                 } else {
-                  that.$toast({type: "error", message: data.message});
+                  _this.$toast({type: "error", message: data.message});
                 }
               });
         }
@@ -129,7 +130,7 @@ export default {
         this.$toast({ type: "error", message: "邮箱格式不正确" });
         return false;
       }
-      if (this.code.trim().length != 6) {
+      if (this.code.trim().length !== 6) {
         this.$toast({ type: "error", message: "请输入6位验证码" });
         return false;
       }
@@ -162,20 +163,14 @@ export default {
     },
     isMobile() {
       const clientWidth = document.documentElement.clientWidth;
-      if (clientWidth > 960) {
-        return false;
-      }
-      return true;
+      return clientWidth <= 960;
+      
     }
   },
   watch: {
     username(value) {
-      var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-      if (reg.test(value)) {
-        this.flag = false;
-      } else {
-        this.flag = true;
-      }
+      const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+      this.flag = !reg.test(value);
     }
   }
 };

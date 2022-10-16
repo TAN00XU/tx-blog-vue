@@ -1,11 +1,11 @@
 
 body {
     /*鼠标指针*/
-    cursor: url(../mouse-pointer/default.cur), default;
+    cursor: url(@/assets/mouse-pointer/default.cur), default;
 }
 
 a, button, img {
-    cursor: url(../mouse-pointer/pointer.cur), default;
+    cursor: url(@/assets/mouse-pointer/pointer.cur), default;
 }
 
 ul {
@@ -154,26 +154,26 @@ p {
         padding: 10px 36px;
     }
 
-    .banner {
-        position: absolute;
-        top: -60px;
-        left: 0;
-        right: 0;
-        height: 400px;
-        background-color: #49b1f5 !important;
-        animation: header-effect 1s;
-    }
+    /*.banner {*/
+    /*    position: absolute;*/
+    /*    top: -60px;*/
+    /*    left: 0;*/
+    /*    right: 0;*/
+    /*    height: 400px;*/
+    /*    background-color: #49b1f5 !important;*/
+    /*    animation: header-effect 1s;*/
+    /*}*/
 
-    .banner-title {
-        animation: title-scale 1s;
-        position: absolute;
-        top: 12.5rem;
-        padding: 0 0.5rem;
-        width: 100%;
-        font-size: 2.5rem;
-        text-align: center;
-        color: #eee;
-    }
+    /*.banner-title {*/
+    /*    animation: title-scale 1s;*/
+    /*    position: absolute;*/
+    /*    top: 12.5rem;*/
+    /*    padding: 0 0.5rem;*/
+    /*    width: 100%;*/
+    /*    font-size: 2.5rem;*/
+    /*    text-align: center;*/
+    /*    color: #eee;*/
+    /*}*/
 
     .blog-container {
         animation: main 1s;
@@ -209,16 +209,24 @@ p {
         padding: 10px 16px;
     }
 
-    .banner {
-        position: absolute;
-        top: -60px;
-        left: 0;
-        right: 0;
-        height: 280px;
-        background-color: #49b1f5 !important;
-        animation: header-effect 1s;
-    }
-
+    /*.banner {*/
+    /*    position: absolute;*/
+    /*    top: -60px;*/
+    /*    left: 0;*/
+    /*    right: 0;*/
+    /*    height: 280px;*/
+    /*    background-color: #49b1f5 !important;*/
+    /*    animation: header-effect 1s;*/
+    /*}*/
+    /*.banner-title {*/
+    /*    position: absolute;*/
+    /*    top: 8.5rem;*/
+    /*    width: 100%;*/
+    /*    font-size: 1.625rem;*/
+    /*    text-align: center;*/
+    /*    color: #eee;*/
+    /*    animation: title-scale 1s;*/
+    /*}*/
     .blog-container {
         animation: main 1s;
         margin: 240px 5px 20px 5px;
@@ -234,15 +242,7 @@ p {
         padding: 36px 14px;
     }
 
-    .banner-title {
-        position: absolute;
-        top: 8.5rem;
-        width: 100%;
-        font-size: 1.625rem;
-        text-align: center;
-        color: #eee;
-        animation: title-scale 1s;
-    }
+
 
     .login-container {
         padding: 1rem;

@@ -16,13 +16,27 @@ export function login(param) {
 
 /**
  * 注册
- * @param param 注册参数
+ * @desc POST
+ * @param params 注册参数
  * @returns {*}
  */
-export function register(param){
+export function register(params){
     return request({
         method: "POST",
         url: "/web/user/register",
-        data:param
+        data:params
     })
 }
+
+/**
+ * 退出登录
+ * @desc GET
+ * @returns {*}
+ */
+export function logout(){
+    return request({
+        method: "GET",
+        url: "/web/user/logout"
+    })
+}
+

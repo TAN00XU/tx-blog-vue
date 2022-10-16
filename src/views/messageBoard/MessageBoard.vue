@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner class="message-banner" title="" path-name="messageBoard">
+    <PageBanner class="message-banner" path-name="messageBoard">
       <!-- 弹幕输入框 -->
       <div class="message-container">
         <h1 class="message-title">留言板</h1>

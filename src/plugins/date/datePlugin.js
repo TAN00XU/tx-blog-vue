@@ -1,7 +1,6 @@
 import Vue from "vue";
 import dayjs from "dayjs";
 
-
 export default {
     install() {
         //日期全局过滤器

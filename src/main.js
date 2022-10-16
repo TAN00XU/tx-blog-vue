@@ -8,9 +8,10 @@ import animated from "animate.css";
 import "./assets/css/index.css";
 import "./assets/css/iconfont.css";
 import "./assets/css/markdown.css";
+
 import "./assets/css/vue-social-share/client.css";
-// 日期时间工具 npm install dayjs --save
-// import dayjs from "dayjs";
+//代码高亮样式
+import "highlight.js/styles/atom-one-dark.css"
 //qq、微博配置文件
 import config from "./assets/js/config";
 //自定义弹窗提示插件
@@ -24,33 +25,16 @@ import vueAxios from "vue-axios";
 import InfiniteLoading from "vue-infinite-loading";
 //弹幕插件
 import { vueBaberrage } from "vue-baberrage";
+//图片预览
+import VueImageSwipe from "vue-image-swipe";
+import "vue-image-swipe/dist/vue-image-swipe.css";
+//vue-social-share 分享网页
+import Share from "vue-social-share";
+import "./assets/css/vue-social-share/client.css";
 
 
 
 
-// //日期全局过滤器
-// Vue.filter("date", function(value) {
-//   return dayjs(value).format("YYYY年MM月DD日");
-// });
-//
-// Vue.filter("year", function(value) {
-//   return dayjs(value).format("YYYY");
-// });
-//
-// Vue.filter("hour", function(value) {
-//   return dayjs(value).format("HH:mm:ss");
-// });
-//
-// Vue.filter("time", function(value) {
-//   return dayjs(value).format("YYYY-MM-DD HH:mm:ss");
-// });
-//
-// Vue.filter("num", function(value) {
-//   if (value >= 1000) {
-//     return (value / 1000).toFixed(1) + "k";
-//   }
-//   return value;
-// });
 //向Vue原型上添加config
 Vue.prototype.config = config;
 //关闭生产提示
@@ -62,6 +46,9 @@ Vue.use(datePlugin);
 Vue.use(vueAxios, axios);
 Vue.use(InfiniteLoading);
 Vue.use(vueBaberrage);
+Vue.use(VueImageSwipe);
+Vue.use(Share);
+
 
 new Vue({
   router,

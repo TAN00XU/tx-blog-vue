@@ -9,7 +9,8 @@ import request from "@/api/baseRequest";
 export function homeArticle(current) {
     return request({
         method: "GET",
-        url: "/web/articles",
+        // url: "/web/articles",
+        url: "/api/articles?current=1",
         params: {
             current: current
         }
@@ -37,7 +38,7 @@ export function archivesArticle(current) {
         method: "GET",
         url: "/web/articles/archives",
         // url: "/api/articles/archives?current=1",
-        params : {
+        params: {
             current: current
         }
     })
@@ -49,7 +50,31 @@ export function archivesArticle(current) {
  */
 export function tagsArticle() {
     return request({
+        method: "GET",
+        url: "/web/articles/tags"
+    })
+}
+
+/**
+ * 根据文章id获取文章
+ * @param articleId 文章id
+ * @returns {*}
+ */
+export function getArticleById(articleId) {
+    return request({
         method : "GET",
-        url : "/web/articles/tags"
+        url : `/api/articles/${articleId}`
+    })
+}
+
+/**
+ * 点赞文章根据文章id
+ * @param articleId 文章id
+ * @returns {*}
+ */
+export function likeArticle(articleId) {
+    return request({
+        method : "POST",
+        url:`/api/articles/${articleId}/like`
     })
 }

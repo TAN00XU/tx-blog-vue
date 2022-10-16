@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <div class="home-banner" :style="cover">
+    <PageBanner class="home-banner" path-name="home"  local-image="1.jpg">
       <div class="banner-container">
         <!-- 网站名称 -->
         <h1 class="blog-title animate__animated animate__zoomIn animate__slow">
@@ -18,7 +18,7 @@
           mdi-chevron-down
         </v-icon>
       </div>
-    </div>
+    </PageBanner>
 
   </div>
 </template>
@@ -26,12 +26,13 @@
 <script>
 //打字机效果npm install easy-typer-js --save
 import EasyTyper from "easy-typer-js";
-
+import PageBanner from "@/components/common/PageBanner";
 /**
  * 首页横幅背景
  */
 export default {
   name:"BannerBackground",
+  components:{PageBanner},
   created() {
     this.init();
   },
@@ -59,6 +60,7 @@ export default {
   methods: {
     // 初始化
     init() {
+      //更改网页标签
       document.title = this.blogInfo.websiteConfig.websiteName;
       // 一言Api进行打字机循环输出效果
       fetch(this.config.hitokoto)
@@ -85,17 +87,7 @@ export default {
     blogInfo() {
       return this.$store.state.blogInfo;
     },
-    //横幅
-    cover() {
-      let cover = "";
-      this.$store.state.blogInfo.pageList.forEach(item => {
-        if (item.pageLabel === "home") {
-          cover = item.pageCover;
-        }
-      });
-      // return "background: url(" + cover + ") center center / cover no-repeat";
-      return "background: black url(" + require("@/assets/images/"+cover) + ") center center / cover no-repeat";
-    }
+
   }
 };
 </script>

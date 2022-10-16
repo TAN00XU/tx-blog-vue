@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner path-name="category"/>
+    <PageBanner path-name="category" title="pageName"/>
     <!-- 分类列表 -->
     <v-card class="blog-container">
       <div class="category-title">分类 - {{ count }}</div>

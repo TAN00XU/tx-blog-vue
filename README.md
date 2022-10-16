@@ -53,13 +53,38 @@ npm install  stylus@0.54.7 stylus-loader@3.0.2  -save
 npm install axios -save
 ```
 ## vue-axios
-```
+```shell
 npm install vue-axios -save
 ```
 
 ## markdown-it插件
+中文文档
+>https://markdown-it.docschina.org/
+ 
 ```shell
 npm install markdown-it --save
+```
+## 语法高亮
+```shell
+npm install highlight.js
+```
+## 剪切板功能
+```shell
+npm install clipboard --save
+```
+## 目录生成
+https://github.com/tscanlin/tocbot
+```shell
+npm i tocbot
+```
+## 基于photoswipe实现的vue图片预览组件vue-image-swipe
+```shell
+npm install vue-image-swipe
+```
+## vue-social-share 分享网页
+> https://github.com/overtrue/share.js
+```shell
+npm install vue-social-share
 ```
 
 ## vue-infinite-loading无限加载
@@ -116,3 +141,10 @@ npm i vue-cute-timeline
 或
 yarn add vue-cute-timeline
 ```
+
+## Vue头像裁剪器 - vue-avatar-cropper
+不指定版本可能会报错
+```shell
+npm install vue-avatar-cropper@1.0.9
+```
+

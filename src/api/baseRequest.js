@@ -4,8 +4,8 @@ import store from '@/store'
 
 const request = axios.create({
     //基础URL
-    baseURL: "http://localhost:8888",
-    // baseURL: "https://www.talkxj.com",
+    // baseURL: "http://localhost:8888",
+    baseURL: "https://www.talkxj.com",
     timeout: 5000
 });
 

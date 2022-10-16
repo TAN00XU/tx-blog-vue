@@ -93,8 +93,9 @@ export default {
   name: "HomeArticle",
   data() {
     return {
-      //文章列表
-      articleList: [
+      // 文章列表
+      articleList:[],
+      /*articleList: [
         {
           "id": 1,
           "articleCover": "https://static.talkxj.com/articles/3dffb2fcbd541886616ab54c92570de3.jpg",
@@ -276,8 +277,8 @@ export default {
             }
           ]
         }
-      ],
-      //当前页
+      ],*/
+      // 当前页
       current:1
     }
   },
@@ -286,9 +287,7 @@ export default {
       let md = require("markdown-it")();
       //获取首页文章
       homeArticle(this.current)
-          .then(
-              ({data}) => {
-                console.log("时候", data)
+          .then(({data}) => {
                 if (data.data.length && data.code !== 200) {
                   // 去除markdown标签
                   data.data.forEach(item => {
@@ -296,7 +295,7 @@ export default {
                         .render(item.articleContent)
                         .replace(/<\/?[^>]*>/g, "")
                         .replace(/[|]*\n/, "")
-                        .replace(/&npsp;/gi, "");
+                        .replace(/&nbsp;/gi, "");
                   });
                   this.articleList.push(...data.data);
                   this.current++;
