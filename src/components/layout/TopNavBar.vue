@@ -134,6 +134,7 @@ export default {
     };
   },
   methods: {
+    //滚动
     scroll() {
       const that = this;
       let scrollTop =

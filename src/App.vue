@@ -3,7 +3,6 @@
     <!-- 导航栏 -->
     <TopNavBar></TopNavBar>
 
-
     <!-- 内容 -->
     <v-main>
 <!--      <v-container>-->
@@ -22,6 +21,8 @@
     <ForgetModel></ForgetModel>
     <!--修改邮箱框-->
     <EmailModel></EmailModel>
+    <!-- 返回顶部 -->
+    <BackTop></BackTop>
   </v-app>
 </template>
 
@@ -33,6 +34,7 @@ import LoginModel from "./components/model/LoginModel";
 import RegisterModel from "./components/model/RegisterModel";
 import ForgetModel from "./components/model/ForgetModel";
 import EmailModel from "@/components/model/EmailModel";
+import BackTop from "@/components/common/BackTop";
 
 //API
 //获取博客信息
@@ -48,7 +50,8 @@ export default {
     LoginModel,
     RegisterModel,
     ForgetModel,
-    EmailModel
+    EmailModel,
+    BackTop
   },
   created() {
     // 获取博客信息

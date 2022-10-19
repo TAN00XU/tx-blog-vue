@@ -1,5 +1,5 @@
 <template>
-  <v-card class="animate__animated animate__zoomIn blog-card mt-5">
+  <v-card class="animate__animated animate__zoomIn blog-card mt-5"  >
     <div class="author-wrapper">
       <!-- 博主头像 -->
       <v-avatar size="110">

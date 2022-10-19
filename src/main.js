@@ -9,13 +9,12 @@ import "./assets/css/index.css";
 import "./assets/css/iconfont.css";
 import "./assets/css/markdown.css";
 
-import "./assets/css/vue-social-share/client.css";
 //代码高亮样式
 import "highlight.js/styles/atom-one-dark.css"
 //qq、微博配置文件
-import config from "./assets/js/config";
+import config from "@/assets/js/config";
 //自定义弹窗提示插件
-import toastPlugin from "./plugins/toast/toastPlugin.js"
+import toastPlugin from "@/plugins/toast/toastPlugin.js"
 //自定义日期时间插件
 import datePlugin from "@/plugins/date/datePlugin";
 //axios

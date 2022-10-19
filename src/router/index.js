@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 /*加载进度条*/
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-// NProgress.configure({ showSpinner: false }); // 是否显示右上角螺旋加载提示
+
 Vue.use(VueRouter);
 
 
@@ -83,6 +83,10 @@ const router = new VueRouter({
     // base: process.env.BASE_URL,
     routes
 });
+
+// NProgress.configure({ showSpinner: false }); // 是否显示右上角螺旋加载提示
+
+
 
 //全局前置路由守卫————初始化的时候被调用、每次路由切换之前被调用
 router.beforeEach((to, from, next) => {
