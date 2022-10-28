@@ -9,8 +9,7 @@ import request from "@/api/baseRequest";
 export function homeArticle(current) {
     return request({
         method: "GET",
-        // url: "/web/articles",
-        url: "/api/articles?current=1",
+        url: "/articles",
         params: {
             current: current
         }
@@ -24,7 +23,7 @@ export function homeArticle(current) {
 export function categoriesArticle() {
     return request({
         method: "GET",
-        url: "/web/articles/categories"
+        url: "/categories"
     })
 }
 
@@ -36,8 +35,7 @@ export function categoriesArticle() {
 export function archivesArticle(current) {
     return request({
         method: "GET",
-        url: "/web/articles/archives",
-        // url: "/api/articles/archives?current=1",
+        url: "/articles/archives",
         params: {
             current: current
         }
@@ -51,7 +49,7 @@ export function archivesArticle(current) {
 export function tagsArticle() {
     return request({
         method: "GET",
-        url: "/web/articles/tags"
+        url: "/tags"
     })
 }
 
@@ -63,7 +61,7 @@ export function tagsArticle() {
 export function getArticleById(articleId) {
     return request({
         method : "GET",
-        url : `/api/articles/${articleId}`
+        url : `/articles/${articleId}`
     })
 }
 
@@ -75,6 +73,6 @@ export function getArticleById(articleId) {
 export function likeArticle(articleId) {
     return request({
         method : "POST",
-        url:`/api/articles/${articleId}/like`
+        url:`/articles/${articleId}/like`
     })
 }

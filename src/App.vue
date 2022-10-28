@@ -38,8 +38,7 @@ import BackTop from "@/components/common/BackTop";
 
 //API
 //获取博客信息
-import {blogInfo,report} from "@/api/blogInfo";
-
+import {blogInfo, report} from "@/api/blogInfo";
 
 export default {
   name: 'App',
@@ -54,16 +53,24 @@ export default {
     BackTop
   },
   created() {
-    // 获取博客信息
-    this.getBlogInfo();
+    this.$nextTick(() => {
+      // 获取博客信息
+      this.getBlogInfo();
+    })
+
     // 上传访客信息
     report();
   },
   methods:{
     getBlogInfo() {
       //获取到博客信息
-      blogInfo().then((res) => {
-        this.$store.commit("BLOG_INFO", res.data.data);
+      blogInfo().then(({data}) => {
+        if(data.status){
+          this.$store.commit("BLOG_INFO", data.data);
+        }else {
+          this.$toast({type: "error", message: data.message});
+        }
+
       });
     }
   }

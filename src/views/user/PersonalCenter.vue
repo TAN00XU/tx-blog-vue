@@ -17,7 +17,7 @@
           <avatar-cropper
               @uploaded="uploadAvatar"
               trigger="#pick-avatar"
-              upload-url="/web/users/avatar"
+              upload-url="/api/users/avatar"
           />
         </v-col>
         <v-col md="7" cols="12">
@@ -85,9 +85,10 @@ export default {
     };
   },
   methods: {
+    // 更新用户信息
     updateUserInfo() {
-      updateUserInfo(this.userInfo).then(
-          ({data}) => {
+      updateUserInfo(this.userInfo)
+          .then(({data}) => {
             if (data.status) {
               this.$store.commit("UPDATE_USER_INFO", this.userInfo);
               this.$toast({type: "success", message: "修改成功"});
@@ -96,6 +97,7 @@ export default {
             }
           });
     },
+    // 上传头像
     uploadAvatar(data) {
       if (data.status) {
         this.$store.commit("UPDATE_AVATAR", data.data);
@@ -108,7 +110,6 @@ export default {
       this.$store.state.emailFlag = true;
     }
   },
-  computed: {}
 };
 </script>
 

@@ -39,17 +39,17 @@
           </a>
           <ul class="menus-submenu">
             <li>
-              <router-link to="/archiveArticle">
+              <router-link to="/archive">
                 <i class="iconfont iconguidang"/> 归档
               </router-link>
             </li>
             <li>
-              <router-link to="/categoriesArticle">
+              <router-link to="/categories">
                 <i class="iconfont iconfenlei"/> 分类
               </router-link>
             </li>
             <li>
-              <router-link to="/tagsArticle">
+              <router-link to="/tags">
                 <i class="iconfont iconbiaoqian"/> 标签
               </router-link>
             </li>
@@ -180,6 +180,9 @@ export default {
     avatar(){
       return this.$store.state.userInfo.avatar;
     },
+    // userId(){
+    //   return this.$store.state.userInfo.userId;
+    // },
     websiteAuthor(){
       return this.$store.state.blogInfo.websiteConfig.websiteAuthor;
     }

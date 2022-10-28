@@ -13,7 +13,6 @@
           <WebsiteNotice/>
           <!--网站信息-->
           <WebsiteInfo/>
-          <WeatherHeFeng/>
         </div>
       </v-col>
       <v-col md="9" cols="12">
@@ -35,7 +34,6 @@ import TalkCarousel from "@/components/home/TalkCarousel";
 import MyCard from "@/components/home/MyCard";
 import WebsiteNotice from "@/components/home/WebsiteNotice";
 import WebsiteInfo from "@/components/home/WebsiteInfo";
-import WeatherHeFeng from "@/components/home/WeatherHeFeng";
 /**
  * 主页
  */
@@ -48,7 +46,6 @@ export default {
     MyCard,
     WebsiteNotice,
     WebsiteInfo,
-    WeatherHeFeng
   }
 }
 </script>

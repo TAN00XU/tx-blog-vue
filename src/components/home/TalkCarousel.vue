@@ -45,26 +45,13 @@ import {homeTalks} from "@/api/Talks.js";
 export default {
   //说说轮播
   name: "TalkCarousel",
-  // props: {
-  //   height: {
-  //     default: 25,
-  //     type: Number
-  //   },
-  //   lineNum: {
-  //     default: 1,
-  //     type: Number
-  //   }
-  // },
   data: function () {
     return {
       num: 0,
       //说说列表
-      talkList:
-    [ "由于老群被封<img src=\"https://static.talkxj.com/emoji/dq.jpg?\" width=\"24\" height=\"24\" alt=\"[大哭]\" style=\"margin: 0 1px;vertical-align: text-bottom\">，现换了个新群208641419，兄弟们记得回家。",
-      "只想着走捷径只会适得其反，是该好好沉淀下来学习了。",
-      "祝大家新年快乐<img src=\"https://static.talkxj.com/emoji/cy.jpg\" width=\"24\" height=\"24\" alt=\"[呲牙]\" style=\"margin: 0 1px;vertical-align: text-bottom\">",
-      "看似简单的文本编辑器，坑竟然这么多<img src=\"https://static.talkxj.com/emoji/dq.jpg?\" width=\"24\" height=\"24\" alt=\"[大哭]\" style=\"margin: 0 1px;vertical-align: text-bottom\">，好在最后的实现效果还不错，后续再进行迭代优化了。",
-      "熬夜爆肝，终于两天把说说功能写完了<img src=\"https://static.talkxj.com/emoji/linghunchuqiao.jpg\" width=\"22\" height=\"20\" style=\"padding: 0 1px;vertical-align: -4px\">"
+      talkList: [
+          "说说轮播",
+          "轮播说说"
     ],
       height:25,
       lineNum:1

@@ -8,6 +8,6 @@ import request from "@/api/baseRequest";
 export function homeTalks(){
     return request({
         method: "GET",
-        url: "/web/talks/homeTalks",
+        url: "/home/talks",
     })
 }

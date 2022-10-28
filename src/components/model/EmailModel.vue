@@ -12,7 +12,7 @@
             placeholder="请输入您的邮箱号"
             :rules="[rules.email,rules.required]"
             clearable
-            @keyup.enter="register"
+            @keyup.enter="sendCode"
         />
         <!-- 验证码 -->
         <div class="mt-7 send-wrapper">
@@ -22,7 +22,7 @@
               label="验证码"
               placeholder="请输入6位验证码"
               :rules="[rules.counter,rules.required]"
-              @keyup.enter="register"
+              @keyup.enter="saveUserEmail"
           />
           <v-btn text small :disabled="flag" @click="sendCode">
             {{ codeMsg }}
@@ -52,7 +52,7 @@ import {emailCode,changeEmail} from "@/api/email";
 export default {
   data: function () {
     return {
-      email: this.$store.state.userInfo.email,
+      email: null,
       code: "",
       flag: true,
       codeMsg: "发送",
@@ -71,6 +71,10 @@ export default {
   },
   methods: {
     sendCode() {
+      if(this.flag){
+        this.$toast({type: "error", message: "邮箱格式不正确"});
+        return;
+      }
       const _this = this;
       // eslint-disable-next-line no-undef
       const captcha = new TencentCaptcha(
@@ -79,6 +83,7 @@ export default {
             if (res.ret === 0) {
               //发送邮件
               _this.countDown();
+              console.log("邮箱",_this.email)
               emailCode(_this.email)
                   .then(({data}) => {
                     if (data.status) {

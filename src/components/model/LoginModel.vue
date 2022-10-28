@@ -64,6 +64,7 @@
       </div>
     </v-card>
   </v-dialog>
+
 </template>
 
 <script>
@@ -134,7 +135,6 @@ export default {
         return false;
       }
       const _this = this;
-
       //腾讯图形验证码
       // eslint-disable-next-line no-undef
       const captcha = new TencentCaptcha(
@@ -159,6 +159,7 @@ export default {
                     }
                   }
               );
+
             }
           });
       // 显示验证码

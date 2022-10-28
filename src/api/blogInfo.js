@@ -8,7 +8,7 @@ import request from "@/api/baseRequest";
 export function blogInfo() {
     return request({
         method: "GET",
-        url: "/web/website/config"
+        url: "/information"
     })
 }
 
@@ -19,6 +19,6 @@ export function blogInfo() {
 export function report(){
     return request({
         method : "POST",
-        url:"/web/report"
+        url:"/report"
     })
 }

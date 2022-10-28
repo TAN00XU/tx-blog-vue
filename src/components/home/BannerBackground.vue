@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner class="home-banner" path-name="home"  local-image="1.jpg">
+    <PageBanner class="home-banner" path-name="home">
       <div class="banner-container">
         <!-- 网站名称 -->
         <h1 class="blog-title animate__animated animate__zoomIn animate__slow">

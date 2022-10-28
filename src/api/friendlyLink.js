@@ -8,6 +8,6 @@ import request from "@/api/baseRequest";
 export function ListFriendlyLink(){
     return request({
         method: "GET",
-        url: "/web/ListFriendlyLink"
+        url: "/friendlyLinks"
     })
 }

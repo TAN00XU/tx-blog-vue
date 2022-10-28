@@ -15,7 +15,7 @@ import "highlight.js/styles/atom-one-dark.css"
 import config from "@/assets/js/config";
 //自定义弹窗提示插件
 import toastPlugin from "@/plugins/toast/toastPlugin.js"
-//自定义日期时间插件
+// 自定义日期时间插件
 import datePlugin from "@/plugins/date/datePlugin";
 //axios
 import axios from "axios";

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner path-name="category" title="pageName"/>
+    <PageBanner path-name="categories" title="pageName"/>
     <!-- 分类列表 -->
     <v-card class="blog-container">
       <div class="category-title">分类 - {{ count }}</div>
@@ -43,41 +43,22 @@ export default {
       categoryList: [
         {
           "id": 1,
-          "categoryName": "项目介绍",
-          "articleCount": 5
+          "categoryName": "分类列表测试",
+          "articleCount": 66
         },
         {
-          "id": 9,
-          "categoryName": "生活随笔",
-          "articleCount": 3
-        },
-        {
-          "id": 12,
-          "categoryName": "设计模式",
-          "articleCount": 1
-        },
-        {
-          "id": 15,
-          "categoryName": "多线程",
-          "articleCount": 0
-        },
-        {
-          "id": 189,
-          "categoryName": "test",
-          "articleCount": 0
-        },
-        {
-          "id": 190,
-          "categoryName": "hexo",
-          "articleCount": 0
+          "id": 2,
+          "categoryName": "测试分类列表",
+          "articleCount": 99
         }
       ],
       count: 0
     };
   },
   methods: {
+    // 获取分类列表
     listCategories() {
-      categoriesArticle
+      categoriesArticle()
           .then(({data}) => {
             this.categoryList = data.data.recordList;
             this.count = data.data.count;

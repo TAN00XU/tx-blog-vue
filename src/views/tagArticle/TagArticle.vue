@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner path-name="tagArticle" title="pageName"/>
+    <PageBanner path-name="tags" title="pageName"/>
     <!-- 标签列表 -->
     <v-card class="blog-container">
       <div class="tag-cloud-title">标签 - {{ count }}</div>
@@ -73,8 +73,13 @@ export default {
   methods: {
     listTags() {
       tagsArticle().then(({ data }) => {
-        this.tagList = data.data.recordList;
-        this.count = data.data.count;
+        if(data.status){
+          this.tagList = data.data.recordList;
+          this.count = data.data.count;
+        }else {
+          this.$toast({type: "error", message: data.message});
+        }
+
       });
     }
   }

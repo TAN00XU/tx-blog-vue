@@ -4,9 +4,14 @@ import store from '@/store'
 
 const request = axios.create({
     //基础URL
-    // baseURL: "http://localhost:8888",
-    baseURL: "https://www.talkxj.com",
-    timeout: 5000
+    baseURL: "/api",
+    timeout: 5000,
+
+    // 重要！！！！！！
+    // 携带cookie 为保持sessionId的一致性
+    // withCredentials: true,
+    // 跨域状态必须使用
+    // crossDomain: true
 });
 
 // 添加请求拦截器

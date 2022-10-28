@@ -15,13 +15,7 @@ const routes = [
             title: "主页"
         }
     },
-    {
-        path: "/archiveArticle",
-        component: resolve => require(["../views/archiveArticle/ArchiveArticle.vue"], resolve),
-        meta: {
-            title: "文章归档"
-        }
-    },
+
     {
         path: "/articles/:articleId",
         component: resolve => require(["../views/article/ArticleDetails.vue"], resolve),
@@ -30,14 +24,21 @@ const routes = [
         }
     },
     {
-        path: "/categoriesArticle",
+        path: "/archive",
+        component: resolve => require(["../views/archiveArticle/ArchiveArticle.vue"], resolve),
+        meta: {
+            title: "文章归档"
+        }
+    },
+    {
+        path: "/categories",
         component: resolve => require(["../views/categoryArticle/CategoryArticle.vue"], resolve),
         meta: {
             title: "文章分类"
         }
     },
     {
-        path: "/tagsArticle",
+        path: "/tags",
         component: resolve => require(["../views/tagArticle/TagArticle.vue"], resolve),
         meta: {
             title: "文章标签"
@@ -85,7 +86,14 @@ const router = new VueRouter({
 });
 
 // NProgress.configure({ showSpinner: false }); // 是否显示右上角螺旋加载提示
-
+//加载进度条配置
+NProgress.configure({
+    easing: "ease", // 动画方式
+    speed: 1000, // 递增进度条的速度
+    showSpinner: true, // 是否显示右上角螺旋加载提示，是否显示加载ico
+    trickleSpeed: 200, // 自动递增间隔
+    minimum: 0.3 // 初始化时的最小百分比
+});
 
 
 //全局前置路由守卫————初始化的时候被调用、每次路由切换之前被调用

@@ -71,41 +71,26 @@ export default {
     return {
       friendLinkList: [
         {
-          "id": 8,
-          "linkName": "Rabbiter",
-          "linkAvatar": "https://rabbiter.top/oss/blogs/imgs/img_a747e35f49e_1610944315976.jpg",
-          "linkAddress": "https://rabbiter.top/",
-          "linkIntro": "Rabbiter的个人博客"
-        },
-        {
-          "id": 10,
-          "linkName": "Yw",
-          "linkAvatar": "https://img.yww52.com/avatar.jpg",
-          "linkAddress": "https://yww52.com/",
-          "linkIntro": "永远相信美好的事情即将发生"
-        },
-        {
-          "id": 13,
-          "linkName": "Cyril",
-          "linkAvatar": "http://statics.twinkle-leaf.cn/avatar/1617637395886.png",
-          "linkAddress": "https://www.twinkle-leaf.cn/",
-          "linkIntro": "Cyril的个人博客"
-        },
-        {
-          "id": 16,
-          "linkName": "包子博客",
-          "linkAvatar": "https://tse3-mm.cn.bing.net/th/id/OIP.N9gKzFp25pPG7h7sIVznSwHaHa?pid=ImgDet&rs=1",
-          "linkAddress": "http://hc-czw.xyz",
-          "linkIntro": "我在快节奏里慢慢来，不加入马戏团"
-        },
+          "id": 1,
+          "linkName": "风丶宇的个人博客",
+          "linkAvatar": "https://static.talkxj.com/photos/b553f564f81a80dc338695acb1b475d2.jpg",
+          "linkAddress": "https://www.talkxj.com",
+          "linkIntro": "往事不随风"
+        }
       ],
       commentType: 2
     };
   },
   methods: {
     listFriendLink() {
-      ListFriendlyLink().then(({data}) => {
-        this.friendLinkList = data.data;
+      ListFriendlyLink()
+          .then(({data}) => {
+            if(data.status){
+              this.friendLinkList = data.data;
+            }else {
+              this.$toast({type: "error", message: data.message});
+            }
+
       });
     }
   },

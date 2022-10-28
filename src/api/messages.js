@@ -10,7 +10,7 @@ import request from "@/api/baseRequest";
 export function messagesList() {
     return request({
         method: "GET",
-        url: "/web/messages"
+        url: "/messages"
     })
 }
 
@@ -24,7 +24,7 @@ export function messagesList() {
 export function addMessage(message) {
     return request({
         method: "POST",
-        url: "/web/messages",
+        url: "/messages",
         data: message
     })
 }

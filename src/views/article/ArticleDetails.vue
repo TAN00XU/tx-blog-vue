@@ -362,8 +362,7 @@ export default {
     getArticle() {
       const _this = this;
       getArticleById(this.$route.params.articleId)
-          .then(
-              ({data}) => {
+          .then(({data}) => {
                 document.title = data.data.articleTitle;
                 //将markdown转换为Html
                 this.article = data.data;
@@ -414,7 +413,7 @@ export default {
                 );
               }
           )
-          .catch(error => this.$toast({type: "error", message: "文章获取失败" + error}));
+          .catch(() => this.$toast({type: "error", message: "文章获取失败"}));
     },
     /**
      * 删除html标签
@@ -454,6 +453,7 @@ export default {
      * 文章点赞
      */
     like() {
+      console.log("userid",this.$store.state.userInfo.userId)
       //判断是否登录
       if (!this.$store.state.userInfo.userId) {
         //唤起登录框

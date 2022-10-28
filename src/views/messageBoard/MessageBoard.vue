@@ -112,6 +112,8 @@ export default {
       messagesList().then(({data}) => {
         if (data.status) {
           this.barrageList = data.data;
+        }else {
+          this.$toast({type: "error", message: data.message});
         }
       });
     }

@@ -9,7 +9,7 @@ import baseRequest from "@/api/baseRequest";
 export function updateUserInfo(userInfo){
     return baseRequest({
         method : "PUT",
-        url :"",
+        url :"/users/info",
         data : userInfo
     })
 }

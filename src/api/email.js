@@ -8,7 +8,7 @@ import request from "@/api/baseRequest";
 export function emailCode(email){
     return request({
         method : "GET",
-        url : "/web/code",
+        url : "/code",
         params:{
             email:email
         }
@@ -24,7 +24,7 @@ export function emailCode(email){
 export function changeEmail(params){
     return request({
         method:"POST",
-        url:"/web/user/email",
+        url:"/users/email",
         data:params
     })
 }

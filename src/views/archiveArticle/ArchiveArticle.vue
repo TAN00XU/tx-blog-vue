@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 横幅 -->
-    <PageBanner path-name="archiveArticle" title="pageName"/>
+    <PageBanner path-name="archive" title="pageName"/>
     <!-- 归档列表 -->
     <v-card class="blog-container">
       <timeline timeline-theme="#00BBFF">
@@ -62,49 +62,14 @@ export default {
       count: 1,
       archiveList: [
         {
-          "id": 53,
-          "articleTitle": "我的2021",
-          "createTime": "2021-12-31T12:03:51"
-        },
-        {
-          "id": 49,
-          "articleTitle": "全站https配置",
-          "createTime": "2021-09-10T20:30:44"
-        },
-        {
-          "id": 30,
-          "articleTitle": "策略模式初见",
-          "createTime": "2021-03-25T11:54:57"
-        },
-        {
-          "id": 25,
-          "articleTitle": "杭漂生活记录",
-          "createTime": "2020-11-20T00:40:08"
-        },
-        {
-          "id": 24,
-          "articleTitle": "下一站启程",
-          "createTime": "2020-08-27T11:28:41"
-        },
-        {
-          "id": 13,
-          "articleTitle": "项目部署教程",
-          "createTime": "2020-07-06T09:28:21"
-        },
-        {
-          "id": 3,
-          "articleTitle": "项目配置介绍",
-          "createTime": "2020-06-30T22:20:05"
+          "id": 1,
+          "articleTitle": "归档列表测试",
+          "createTime": "2022-10-1T12:00:00"
         },
         {
           "id": 2,
-          "articleTitle": "Docker安装运行环境",
-          "createTime": "2020-06-29T17:42:39"
-        },
-        {
-          "id": 1,
-          "articleTitle": "博客技术总结",
-          "createTime": "2020-06-29T12:12:09"
+          "articleTitle": "归档列表测试",
+          "createTime": "2022-10-2T12:00:00"
         }
       ]
     };
