@@ -47,6 +47,7 @@ export default {
     WebsiteNotice,
     WebsiteInfo,
   }
+
 }
 </script>
 

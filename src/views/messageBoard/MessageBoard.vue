@@ -65,12 +65,9 @@ export default {
       barrageList: []
     };
   },
-  computed: {
-    userInfo() {
-      return this.$store.state.userInfo;
-    }
-  },
+
   methods: {
+    // 添加留言
     addToList() {
       if (this.messageContent.trim() === "") {
         this.$toast({type: "error", message: "留言不能为空"});
@@ -116,8 +113,13 @@ export default {
           this.$toast({type: "error", message: data.message});
         }
       });
+    },
+  },
+  computed: {
+    userInfo() {
+      return this.$store.state.userInfo;
     }
-  }
+  },
 };
 </script>
 

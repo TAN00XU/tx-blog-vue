@@ -76,3 +76,19 @@ export function likeArticle(articleId) {
         url:`/articles/${articleId}/like`
     })
 }
+
+
+/**
+ * 搜索文章
+ * @param keywords
+ * @returns {*}
+ */
+export function searchArticle(keywords){
+    return request({
+        method : "GET",
+        url:"/articles/search",
+        params:{
+            keywords:keywords
+        }
+    })
+}

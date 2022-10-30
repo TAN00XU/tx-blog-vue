@@ -26,7 +26,8 @@ const mutations = {
      * @constructor
      */
     BLOG_INFO(state, blogInfo) {
-        state.blogInfo = {...state.blogInfo, ...blogInfo}
+        // state.blogInfo = {...state.blogInfo, ...blogInfo}
+        state.blogInfo=blogInfo
     },
 
     /**
@@ -133,7 +134,7 @@ const state = {
     userInfo: {
         userId: null,
         //昵称
-        nickname: "昵称",
+        nickname: "",
         //头像
         avatar: "",
         //用户简介
@@ -147,9 +148,9 @@ const state = {
         //说说点赞
         talkLikeSet: [],
         //用户邮箱
-        email: "tan00xu@163.com",
+        email: "",
         //登录类型
-        loginType: "null",
+        loginType: null,
         token: "<empty>",
     },
     //博客信息

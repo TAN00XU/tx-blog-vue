@@ -5,7 +5,7 @@
       <div class="banner-container">
         <!-- 网站名称 -->
         <h1 class="blog-title animate__animated animate__zoomIn animate__slow">
-          {{ blogInfo.websiteConfig.websiteName }}
+          {{ websiteName }}
         </h1>
         <!-- 一言 -->
         <div class="blog-intro animate__animated animate__bounce animate__slow">
@@ -35,8 +35,14 @@ export default {
   components:{PageBanner},
   created() {
     this.init();
+    //更改网页标签
+    const _this=this;
+    // setTimeout(() => {
+      document.title = _this.websiteName;
+    // },500)
+
   },
-  data: function() {
+  data() {
     return {
       tip: false,
       time: "",
@@ -60,8 +66,6 @@ export default {
   methods: {
     // 初始化
     init() {
-      //更改网页标签
-      document.title = this.blogInfo.websiteConfig.websiteName;
       // 一言Api进行打字机循环输出效果
       fetch(this.config.hitokoto)
           .then(res => {
@@ -84,8 +88,8 @@ export default {
     },
   },
   computed: {
-    blogInfo() {
-      return this.$store.state.blogInfo;
+    websiteName() {
+      return this.$store.state.blogInfo.websiteConfig.websiteName;
     },
 
   }

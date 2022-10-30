@@ -12,7 +12,7 @@ const routes = [
         path: '/',
         component: resolve => require(["../views/home/HomePage.vue"], resolve),
         meta: {
-            title: "主页"
+            title: "首页"
         }
     },
 
@@ -85,7 +85,7 @@ const router = new VueRouter({
     routes
 });
 
-// NProgress.configure({ showSpinner: false }); // 是否显示右上角螺旋加载提示
+
 //加载进度条配置
 NProgress.configure({
     easing: "ease", // 动画方式

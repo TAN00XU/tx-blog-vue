@@ -69,7 +69,7 @@
             <a v-else :href="item.webSite" target="_blank">
               {{ item.nickname }}
             </a>
-            <span class="blogger-tag" v-if="item.userId == 1">博主</span>
+            <span class="blogger-tag" v-if="item.userId === 1">博主</span>
           </div>
           <!-- 信息 -->
           <div class="comment-info">
@@ -107,13 +107,13 @@
                 <a v-else :href="reply.webSite" target="_blank">
                   {{ reply.nickname }}
                 </a>
-                <span class="blogger-tag" v-if="reply.userId == 1">博主</span>
+                <span class="blogger-tag" v-if="reply.userId === 1">博主</span>
               </div>
               <!-- 信息 -->
               <div class="comment-info">
                 <!-- 发表时间 -->
                 <span style="margin-right:10px">
-                  {{ reply.createTime | date }}
+                  {{ reply.createTime | time }}
                 </span>
                 <!-- 点赞 -->
                 <span
@@ -205,7 +205,7 @@ import Paging from "./Paging";
 import EmojiFrame from "@/components/common/EmojiFrame";
 import EmojiList from "@/assets/js/emoji";
 
-import {getComments} from "@/api/comments";
+import {getComments, saveComment} from "@/api/comments";
 
 /**
  * 评论区
@@ -307,6 +307,7 @@ export default {
             this.$emit("getCommentCount", this.count);
           });
     },
+    // 添加评论
     insertComment() {
       //判断登录
       if (!this.$store.state.userId) {
@@ -319,7 +320,7 @@ export default {
         return false;
       }
       //解析表情
-      var reg = /\[.+?\]/g;
+      const reg = /\[.+?\]/g;
       this.commentContent = this.commentContent.replace(reg, function (str) {
         return (
             "<img src= '" +
@@ -330,7 +331,7 @@ export default {
       //发送请求
       const path = this.$route.path;
       const arr = path.split("/");
-      var comment = {
+      const comment = {
         commentContent: this.commentContent,
         type: this.type
       };
@@ -343,22 +344,24 @@ export default {
           break;
       }
       this.commentContent = "";
-      this.axios.post("/api/comments", comment).then(({data}) => {
-        if (data.flag) {
-          // 查询最新评论
-          this.current = 1;
-          this.listComments();
-          const isReview = this.$store.state.blogInfo.websiteConfig.isCommentReview;
-          if (isReview) {
-            this.$toast({type: "warning", message: "评论成功，正在审核中"});
-          } else {
-            this.$toast({type: "success", message: "评论成功"});
-          }
-        } else {
-          this.$toast({type: "error", message: data.message});
-        }
-      });
+      saveComment(comment)
+          .then(({data}) => {
+            if (data.status) {
+              // 查询最新评论
+              this.current = 1;
+              this.listComments();
+              const isReview = this.$store.state.blogInfo.websiteConfig.isCommentReview;
+              if (isReview) {
+                this.$toast({type: "warning", message: "评论成功，正在审核中"});
+              } else {
+                this.$toast({type: "success", message: "评论成功"});
+              }
+            } else {
+              this.$toast({type: "error", message: data.message});
+            }
+          });
     },
+    // 点赞评论
     like(comment) {
       // 判断登录
       if (!this.$store.state.userId) {
